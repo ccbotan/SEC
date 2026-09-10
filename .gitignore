@@ -1,0 +1,7 @@
+venv/
+__pycache__/
+*.pyc
+.env
+*.so
+hash/hashes.txt
+hash/rockyou.txt

@@ -1,0 +1,14 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug grader.py put",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/grader.py",
+      "args": [],
+      "console": "integratedTerminal",
+      "python": "${workspaceFolder}/venv/bin/python"
+    }
+  ]
+}
