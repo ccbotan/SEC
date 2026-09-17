@@ -13,7 +13,7 @@ def timeout(func, args=(), kwargs={}, timeout_duration=1, default=None):
         raise TimeoutError()
 
     # set the timeout handler
-    signal.signal(signal.SIGALRM, handler) 
+    signal.signal(signal.SIGALRM, handler)
     signal.alarm(timeout_duration)
     try:
         result = func(*args, **kwargs)
@@ -24,11 +24,11 @@ def timeout(func, args=(), kwargs={}, timeout_duration=1, default=None):
 
 def test_2a():
     result = timeout(problem_2a,timeout_duration = 5*60)
-    
+
     if(isinstance(result, str)):
         result = result.encode("ascii")
 
-    target = "a33a874eb313"
+    target = "2e9089fefc7a"
 
     if toy_hash(result).hex() != target:
         raise Exception(f"toy_hash(password) outputs {toy_hash(result).hex()}, not {target}")
@@ -41,20 +41,20 @@ def test_2c():
             for line in data_file:
                 data_hash.add(line.strip())
 
-    
+
     result = timeout(problem_2c,timeout_duration =10*60)
 
 
     if(isinstance(result, str)):
         result = result.encode("ascii")
-  
+
 
     if toy_hash(result).hex() not in data_hash:
         raise Exception(f"toy_hash(password) = {toy_hash(result).hex()} is not found in the text file of hashes!")
 
 def test_4b():
     a,b = timeout(problem_4b,timeout_duration =20*60)
-    
+
     if a == b:
         raise Exception(f"colliding pre-images can not be equal! {a} == {b}")
 

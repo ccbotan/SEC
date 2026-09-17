@@ -1,4 +1,3 @@
-
 import time
 from ecdsa import NIST256p, SigningKey
 import hashlib

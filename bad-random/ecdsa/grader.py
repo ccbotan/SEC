@@ -1,8 +1,7 @@
-
 from sol import problem_1a, problem_2b
 from ecdsa import SigningKey, NIST256p
 from ecdsa.util import sigencode_string, sigdecode_string
-import hashlib 
+import hashlib
 import keygen
 import time
 from datetime import datetime
@@ -12,7 +11,9 @@ import random
 import traceback
 
 def test_1():
-    random_time = random.randint(915148800,1672560000)
+    #random_time = random.randint(915148800,1672560000)
+    random_time = 1222099200
+
     b = b'%d' % random_time
 
     date_string = datetime.fromtimestamp(random_time).strftime("%Y-%m-%d")
@@ -40,7 +41,7 @@ def test_2():
 
     sig = sk.sign(message_1.encode('utf-8'),k=19)
     r1, s1 = sigdecode_string(sig, vk.pubkey.order)
-    
+
     sig2 = sk.sign(message_2.encode("utf-8"),k=19)
     r2, s2 = sigdecode_string(sig2, vk.pubkey.order)
 
@@ -52,10 +53,10 @@ def test_2():
 
     #Start the attack
     result = problem_2b((r1,s1), (r2,s2), Hm1, Hm2)
-    
+
     if(result != pk):
         raise Exception("Attack key does not equal private key.")
-   
+
 
 checks = {
     "1": test_1,

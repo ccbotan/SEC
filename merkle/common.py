@@ -21,5 +21,3 @@ class Proof:
         self.key = key
         self.val = val
         self.siblings = siblings
-
-

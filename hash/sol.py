@@ -8,7 +8,7 @@ def problem_2a():
     password = None
     script_dir = os.path.dirname(__file__)
     file_path = os.path.join(script_dir, "words_alpha.txt")
-    target_hex = "a33a874eb313"
+    target_hex = "2e9089fefc7a"
     target = bytes.fromhex(target_hex)
     with open(file_path) as f:
         for line in f:
@@ -29,11 +29,11 @@ def problem_2c():
     with open(hashes_path) as h:
         targets = {bytes.fromhex(line.strip()) for line in h if line.strip()}
 
-    wordlists = ["rockyou.txt"] 
+    wordlists = ["rockyou.txt"]
     for wl in wordlists:
         path = os.path.join(dir_path, wl)
         if not os.path.exists(path):
-            continue 
+            continue
         with open(path, encoding= 'latin-1') as w:
             for line in w:
                 pw = line.strip()
@@ -71,7 +71,7 @@ def problem_3d(B,N):
     prob = None
     prob = N * B * (B - 1) / 2 * (1 / N ** 2)
     return prob
-    
+
 # return reasonable upper bound
 def problem_3e(L,n):
     prob = None
@@ -103,7 +103,7 @@ def problem_4b():
     print("Find the collision point!!")
 
     # Hash h1 and h2 until they collides
-    h1 = initial_val    
+    h1 = initial_val
     h2 = col_digest
     cnt = 1
 
@@ -118,7 +118,7 @@ def problem_4b():
         cnt = cnt + 1
 
     tail_length = cnt
-    assert h1 != h2, "collision pair should not be identical!"        
+    assert h1 != h2, "collision pair should not be identical!"
 
     #calculate the length of the ring
     """target_hash = H(h1)
@@ -142,5 +142,4 @@ if __name__ == "__main__":
     start = time.perf_counter()
     problem_4b()
     end = time.perf_counter()
-    print(f"耗时: {end - start:.4f} 秒") 
-        
+    print(f"耗时: {end - start:.4f} 秒")
